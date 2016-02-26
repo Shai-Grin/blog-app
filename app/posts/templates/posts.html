@@ -1,0 +1,52 @@
+<section class="col-md-8">
+    <h2 class="page-header">Showing {{postsCtrl.quantity}} posts</h2>
+
+    <article ng-repeat="post in postsCtrl.posts | limitTo: postsCtrl.quantity: postsCtrl.startAt * 3 ">
+    <header>
+        <h2>
+            <a href="#">{{post.title}}</a>
+        </h2>
+
+        <p>
+            <small class="glyphicon glyphicon-user"></small>
+            by <a href="#">{{post.author}}</a>
+        </p>
+        <p>
+            <small class="glyphicon glyphicon-time"></small>
+            {{post.date | date: mediumDate}}
+        </p>
+    </header>
+
+    <!-- Post Description -->
+    <p>{{post.description}}</p>
+    <br>
+
+    <footer class="clearfix">
+        <p class="pull-left">
+            <b>Tags:&nbsp;</b>
+							<span data-ng-repeat="tags in post.tags">
+								<a href="#" class="label label-default">{{tags}}</a>
+							</span>
+        </p>
+
+        <a class="btn btn-primary pull-right" ng-href="post.htmlPath">
+            Read More <i class="glyphicon glyphicon-chevron-right"></i>
+        </a>
+    </footer>
+    <hr>
+</article>
+    <a href="#/posts/{{postsCtrl.startAt - 1}}" ng-hide="postsCtrl.startAt === 0"> newer
+    </a>
+    <a href="#/posts/{{postsCtrl.startAt + 1}}" ng-hide="postsCtrl.quantity * (postsCtrl.startAt + 1) >= postsCtrl.posts.length"> older
+    </a>
+    <ul class="pager">
+        <li class="previous">
+            <a href="#">&larr; Older</a>
+        </li>
+        <li class="next">
+            <a href="#">Newer &rarr;</a>
+        </li>
+    </ul>
+</section>
+
+<!-- Blog Sidebar Widgets Column -->
