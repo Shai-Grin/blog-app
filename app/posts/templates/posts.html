@@ -1,10 +1,11 @@
 <section class="col-md-8">
     <h2 class="page-header">Showing {{postsCtrl.quantity}} posts</h2>
 
-    <article ng-repeat="post in postsCtrl.posts | limitTo: postsCtrl.quantity: postsCtrl.startAt * 3 ">
+    <article ng-repeat="post in postsCtrl.posts | limitTo: postsCtrl.quantity: postsCtrl.startAt * 3 "
+             ng-controller="thumbPostController as tpCon">
     <header>
         <h2>
-            <a href="#">{{post.title}}</a>
+            <a href="#/post/{{tpCon.hyphenate(post.title)}}">{{post.title}}</a>
         </h2>
 
         <p>
@@ -29,24 +30,24 @@
 							</span>
         </p>
 
-        <a class="btn btn-primary pull-right" ng-href="post.htmlPath">
+        <a class="btn btn-primary pull-right" href="/posts/{{post.htmlPath}}">
             Read More <i class="glyphicon glyphicon-chevron-right"></i>
         </a>
     </footer>
     <hr>
 </article>
-    <a href="#/posts/{{postsCtrl.startAt - 1}}" ng-hide="postsCtrl.startAt === 0"> newer
-    </a>
-    <a href="#/posts/{{postsCtrl.startAt + 1}}" ng-hide="postsCtrl.quantity * (postsCtrl.startAt + 1) >= postsCtrl.posts.length"> older
-    </a>
     <ul class="pager">
         <li class="previous">
-            <a href="#">&larr; Older</a>
+            <a href="#/posts/{{postsCtrl.startAt + 1}}" ng-hide="postsCtrl.quantity * (postsCtrl.startAt + 1) >= postsCtrl.posts.length">&larr; Older</a>
         </li>
         <li class="next">
-            <a href="#">Newer &rarr;</a>
+            <a href="#/posts/{{postsCtrl.startAt - 1}}" ng-hide="postsCtrl.startAt === 0">Newer &rarr;</a>
         </li>
     </ul>
 </section>
 
 <!-- Blog Sidebar Widgets Column -->
+
+
+
+</section>

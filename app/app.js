@@ -18,11 +18,10 @@
             }).when('/posts/:num', {
                 templateUrl:'app/posts/templates/posts.html',
                 controller: 'postsAccess as postsCtrl'
-            }).when('/posts:pageNum?', {
-                templateUrl:'app/posts/templates/posts.html',
+            }).when('/post/:pageTitle', {
+                template: `<ng-include src="'data/posts/html/' + postsCtrl.hyphenToFilename(postsCtrl.currTitle)">`,
                 controller: 'postsAccess as postsCtrl'
-            })
-            .when('/admin', {
+            }).when('/admin', {
                 templateUrl: '/app/admin/templates/admin.html',
                 controller: 'adminAccess as adminCtrl'
             })

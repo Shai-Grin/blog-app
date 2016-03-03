@@ -65,9 +65,13 @@
 			<ng-view></ng-view>
 
 			<!-- Blog Sidebar Widgets Column -->
+			<aside class="col-md-4">
+				<div class="well">
 
-			<ng-include src="'app/posts/templates/aside.html'">
+					<ng-include src="'app/posts/templates/aside.html'">
 
+				</div>
+			</aside>
 		</div>
 		<!-- /.row -->
 
@@ -98,6 +102,7 @@
 	<!-- controllers -->
 	<script src="/app/admin/controllers/adminAccess.js"></script>
 	<script src="/app/posts/controllers/postAccess.js"></script>
+	<script src="/app/posts/controllers/thumbPostController.js"></script>
 
 </body>
 </html>
